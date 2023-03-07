@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=BIG5"
+    pageEncoding="BIG5"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="BIG5">
+<title>Using JavaBeans with JSP</title>
+
+</head>
+<body>
+	<h3>Using JavaBeans with JSP</h3>
+	<jsp:useBean id="stringBean" class="com.lcpan.bean.StringBean" />
+	<ol>
+		<li>
+			<jsp: setProperty name="stringBean" prorperty="message" value="This is an banana" />
+			Set and get property with jsp:setProperty:<br>
+			<jsp: getProperty name="stringBean" prorperty="message"/>
+			
+		</li>
+	</ol>
+</body>
+</html>
