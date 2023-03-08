@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=BIG5"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>員工資料</title>
+</head>
+<body style="background-color:#fdf5e6">
+<jsp:useBean id="emp" scope="request" class="com.lcpan.bean.EmpBean" />
+<table>
+<tr><td>員工編號
+<td><input type="text" disabled value="<%= emp.getEmpno() %>">
+<tr><td><input type="text" disabled value="<%= emp.getEname() %>">
+<tr><td><input type="text" disabled value="<%= emp.getHiredate() %>">
+<tr><td><input type="text" disabled value="<%= emp.getSalary() %>">
+<tr><td><input type="text" disabled value="<%= emp.getDeptno() %>">
+<tr><td><input type="text" disabled value="<%= emp.getTitle() %>">
+
+	
+</tr>
+</table>
+
+</body>
+</html>
