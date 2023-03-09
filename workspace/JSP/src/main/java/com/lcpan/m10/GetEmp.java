@@ -57,9 +57,6 @@ public class GetEmp extends HttpServlet {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-	
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 

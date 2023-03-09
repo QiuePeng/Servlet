@@ -1,0 +1,31 @@
+package com.lcpan.m11;
+
+import java.io.IOException;
+import java.sql.Connection;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/EmpUpdate")
+public class EmpUpdate extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	Connection conn;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		String sql = "UPDATE employee SET "+
+			" empno=? , ename=? , hiredate=? , salary=? , deptno=? , title=? where empno=?";
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+
+		doGet(request, response);
+	}
+
+}

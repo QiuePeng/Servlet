@@ -24,7 +24,9 @@ public class EmpInsert extends HttpServlet {
 	Connection conn;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String sql = "insert into employee values(?,?,?,?,?,?)";
+		String sql = "INSERT INTO [dbo].[employee]"+
+					"( [empno],[ename],[hiredate],[salary],[deptno],[title])"+
+					" VALUES(?,?,?,?,?,?)";
 		
 		String empno = request.getParameter("empno");
 		String ename = request.getParameter("ename");
@@ -40,7 +42,6 @@ public class EmpInsert extends HttpServlet {
 					.lookup("java:/comp/env/jdbc/servdb");
 			conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			EmpBean emp = new EmpBean();
 			stmt.setString(1,empno);
 			stmt.setString(2,ename);
 			stmt.setString (3,hiredate);
@@ -48,7 +49,13 @@ public class EmpInsert extends HttpServlet {
 			stmt.setString(5,deptno);
 			stmt.setString(6,title);
 			
-			stmt.executeUpdate();
+			int a = stmt.executeUpdate();
+			if(a<1) {
+				request.setAttribute("mes", "新增失敗");
+			}
+			else {
+				request.setAttribute("mes", "新增成功");
+			}
 			stmt.close();
 			request.getRequestDispatcher("/m11/EmpInsert.jsp").forward(request, response);
 			

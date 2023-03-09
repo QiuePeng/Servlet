@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增員工資料</title>
+</head>
+<body style="background-color:#fdf5e6">
+<div align="center">
+<h2>新增員工資料</h2>
+<form method="post" action="EmpInsert">
+員工編號 :<input type="text" name="empno" /><br>
+姓名:<input type="text" name="empname" /><br>
+到職日:<input type="text" name="hiredate" /><br>
+薪水:<input type="text" name="salary" /><br>
+部門編號:<input type="text" name="deptno" /><br>
+職稱:<input type="text" name="title" /><br>
+<input type="submit" value="確定" />
+</form>
+</div>
+</body>
+</html>
