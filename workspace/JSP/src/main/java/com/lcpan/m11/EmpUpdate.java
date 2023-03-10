@@ -27,7 +27,7 @@ public class EmpUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String sql = "UPDATE employee SET "+
-			" empno=? , ename=? , hiredate=? , salary=? , deptno=? , title=? where empno=?";
+			"ename=? , hiredate=? , salary=? , deptno=? , title=? where empno=?";
 		
 		String empno = request.getParameter("empno");
 		String ename = request.getParameter("ename");
@@ -43,14 +43,12 @@ public class EmpUpdate extends HttpServlet {
 					.lookup("java:/comp/env/jdbc/servdb");
 			conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-			EmpBean emp = new EmpBean();
-			stmt.setString(1,empno);
-			stmt.setString(2,ename);
-			stmt.setString (3,hiredate);
-			stmt.setString(4,salary);
-			stmt.setString(5,deptno);
-			stmt.setString(6,title);
+			stmt.setString(1,ename);
+			stmt.setString (2,hiredate);
+			stmt.setString(3,salary);
+			stmt.setString(4,deptno);
+			stmt.setString(5,title);
+			stmt.setString(6,empno);
 			
 			int a = stmt.executeUpdate();
 			if(a<1) {
@@ -58,7 +56,6 @@ public class EmpUpdate extends HttpServlet {
 			}else {
 				request.setAttribute("mes", "修改成功");
 			}
-			request.setAttribute("emp", emp);
 			stmt.close();
 			request.getRequestDispatcher("/m11/EmpUpdate.jsp").forward(request, response);
 			
@@ -69,6 +66,8 @@ public class EmpUpdate extends HttpServlet {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("mes", "修改失敗");
+			request.getRequestDispatcher("/m11/EmpUpdate.jsp").forward(request, response);
 		}
 	}
 		

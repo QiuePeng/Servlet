@@ -7,6 +7,7 @@
 <title>員工資料</title>
 </head>
 <body style="background-color:#fdf5e6">
+<h2><%= request.getAttribute("mes")  %></h2>
 <div align="center">
 <table>
 <tr><td>員工編號<td><input type="text" disabled  value="<%= request.getParameter("empno") %>">
