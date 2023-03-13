@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.lcpan.bean.EmpBean;
-
 
 @WebServlet("/EmpInsert")
 public class EmpInsert extends HttpServlet {

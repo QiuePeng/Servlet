@@ -66,8 +66,6 @@ public class EmpUpdate extends HttpServlet {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-			request.setAttribute("mes", "修改失敗");
-			request.getRequestDispatcher("/m11/EmpUpdate.jsp").forward(request, response);
 		}
 	}
 		
