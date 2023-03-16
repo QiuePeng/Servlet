@@ -9,12 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lcpan.bean.HangoutBean;
 
-
-@WebServlet("/Insert")
-public class Insert extends HttpServlet {
+@WebServlet("/Update")
+public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String ArticleID = request.getParameter("ArticleID");
@@ -39,15 +37,13 @@ public class Insert extends HttpServlet {
 		request.setAttribute("emp", HB);
 		
 		HangoutDAO HD = new HangoutDAO();
-		HD.insertArticle(HB);
+		HD.updateArticle(HB);
 		
-		
-		
-		request.getRequestDispatcher("Servlet").forward(request, response);
+		request.getRequestDispatcher("/hangout/update.jsp").forward(request, response);
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);

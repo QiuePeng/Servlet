@@ -10,9 +10,10 @@
 <body>
 <div align="center">
 <h2>專欄列表</h2>
+<a href='./hangout/Insert.html'>增加</a>
 <table border="1">
 <tr style="background-color:#a8fefa">
-<th>專欄ID<th>專欄名稱<th>一般會員<th>地點ID<th>內容<th>主題<th>撰寫時間<th>修改時間
+<th>專欄ID<th>專欄名稱<th>一般會員<th>地點ID<th>內容<th>主題<th>撰寫時間<th>修改時間<th>
 <% List<HangoutBean> list = (ArrayList<HangoutBean>)request.getAttribute("List");
 for(HangoutBean emp : list) { %>
 <tr><td><%= emp.getArticleID() %>
@@ -23,7 +24,10 @@ for(HangoutBean emp : list) { %>
 <td><%= emp.getTheme() %>
 <td><%= emp.getWriteDate() %>
 <td><%= emp.getEditDate() %>
+
+<td><a href="Update?ArticleName=<%= emp.getArticleName() %>>">編輯</a> | <a href="Delete?ArticleName=<%= emp.getArticleName() %>">刪除</a>
 <% } %>
+<h3>共<%= list.size()  %>筆員工資料</h3>
 </table>
 </body>
 </html>
