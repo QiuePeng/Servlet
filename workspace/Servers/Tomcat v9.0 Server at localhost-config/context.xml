@@ -30,4 +30,8 @@
     	type="javax.sql.DataSource"
     	global="jdbc/servdb"
     	name="jdbc/servdb" />
+    <ResourceLink
+	   	type="javax.sql.DataSource"
+	   	global="jdbc/hangout"
+	   	name="jdbc/hangout" />
 </Context>
