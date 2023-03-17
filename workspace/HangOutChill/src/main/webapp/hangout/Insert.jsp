@@ -7,6 +7,7 @@
 <title>專欄資訊</title>
 </head>
 <body>
+<div align="center">
 <jsp:useBean id="emp" scope="request" class="com.lcpan.bean.HangoutBean" />
 <table border="1">
 <tr><td>員工編號<td><input type="text" disabled value="<%= emp.getArticleID() %>">
@@ -20,5 +21,6 @@
 
 <a href="SelectAll">查看所有專欄</a>
 </table>
+</div>
 </body>
 </html>

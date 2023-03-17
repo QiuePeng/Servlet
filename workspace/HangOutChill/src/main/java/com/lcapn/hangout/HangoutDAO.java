@@ -104,6 +104,40 @@ public class HangoutDAO {
 		
 	}
 	
+	
+	public void selectKey(String KeyName) {
+		String sql = "SELECT * FROM Article WHERE ArticleName LIKE ? ";
+		
+		try {
+			Context context = new InitialContext();
+			DataSource ds = (DataSource)context
+					.lookup("java:/comp/env/jdbc/hangout");
+			conn = ds.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+KeyName+"%");
+			ResultSet rs = stmt.executeQuery();
+			HangoutBean HB = new HangoutBean();
+			while(rs.next()) {
+				HB.setArticleID(rs.getString("ArticleID"));
+				HB.setArticleName(rs.getString("ArticleName"));
+				HB.setNormalAccount(rs.getString("NormalAccount"));
+				HB.setPlaceID(rs.getString("PlaceID"));
+				HB.setContent(rs.getString("Content"));
+				HB.setTheme(rs.getString("Theme"));
+				HB.setWriteDate(rs.getString("WriteDate"));
+				HB.setEditDate(rs.getString("EditDate"));
+			}
+		}
+		catch (NamingException e) {
+			e.printStackTrace();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+				
+	}
+	
 	public List<HangoutBean>  selectAllArticle() {
 		String sql = "SELECT [ArticleID],[ArticleName],[NormalAccount],[PlaceID],[Content],[Theme],[WriteDate],[EditDate]"
 				+"FROM [dbo].[Article]";
